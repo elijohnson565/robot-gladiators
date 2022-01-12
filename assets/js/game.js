@@ -26,9 +26,15 @@ var fight = function() {
             window.alert("Roborto has attacked and brought your health down to " + playerHealth + " health points");
             break;
         case "skip":
-            window.alert("You have skipped! You have lost 10 money points. You have " + playerMoney + " money points left")
-            playerMoney -= 10;
-            break;
+            var confirmSkip = window.confirm("Are you sure you'd like to skip?")
+            if(confirmSkip){
+                window.alert("You have skipped! You have lost 10 money points. You have " + playerMoney + " money points left")
+                playerMoney -= 10;
+                break;
+            }else{
+                fight();
+                break;
+            }
         default:
             window.alert("GAME OVER!");
             break;
