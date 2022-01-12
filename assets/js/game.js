@@ -6,13 +6,13 @@ var playerMoney = 10;
 // You can also log multiple values at once like this
 console.log(playerName, playerAttack, playerHealth);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roberto", "Amy Android", "Robo Trumble"];
 var enemyHealth = 50;
 var enemyAttack = 12;
 
 var gameover = false;
 
-var fight = function() {
+var fight = function(opponent) {
 
     window.alert("Welcome to Robot Gladiators!");
 
@@ -21,9 +21,9 @@ var fight = function() {
     switch(fightOrNoFight){
         case "fight":
             enemyHealth -= playerAttack;
-            window.alert("you have attacked and brought Roborto's health down to " + enemyHealth + " health points");
+            window.alert("you have attacked and brought " + opponent + "'s health down to " + enemyHealth + " health points");
             playerHealth -= enemyAttack;
-            window.alert("Roborto has attacked and brought your health down to " + playerHealth + " health points");
+            window.alert(opponent + " has attacked and brought your health down to " + playerHealth + " health points");
             break;
         case "skip":
             var confirmSkip = window.confirm("Are you sure you'd like to skip?")
@@ -44,7 +44,9 @@ var fight = function() {
 
 while(!gameover){
     if(playerHealth > 0 && enemyHealth > 0){
-        fight();
+        for(i = 0; i < enemyNames.length; i++){
+            fight(enemyNames[i]);
+        }
     } else if (enemyHealth <= 0){
         window.alert("The enemy robot has been destroyed!");
         gameover = true;
