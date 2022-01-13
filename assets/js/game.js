@@ -11,10 +11,10 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 var gameover = false;
-
+var round = 1;
 var fight = function(opponent) {
 
-    window.alert("Welcome to Robot Gladiators!");
+    window.alert("Welcome to Robot Gladiators! Round " + round);
 
     fightOrNoFight = window.prompt("Would you like to fight or skip? If you skip you lose 10 money points");
 
@@ -45,13 +45,17 @@ var fight = function(opponent) {
 while(!gameover){
     if(playerHealth > 0 && enemyHealth > 0){
         for(i = 0; i < enemyNames.length; i++){
+            debugger;
             fight(enemyNames[i]);
+            round++;
         }
     } else if (enemyHealth <= 0){
         window.alert("The enemy robot has been destroyed!");
+        round = 1;
         gameover = true;
     } else{
         window.alert("You have been destroyed!");
+        round = 1;
         gameover = true;
     }
 }
